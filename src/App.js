@@ -11,10 +11,11 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  onLeaveFeedback = (id, val) => {
-    this.setState({
-      [id]: val + 1,
-    });
+  onLeaveFeedback = event => {
+    const name = event.currentTarget.name;
+    this.setState(prevState => ({
+      [name]: prevState[name] + 1,
+    }));
   };
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -28,7 +29,7 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
-    const feedbackOptions = { good, neutral, bad };
+    const feedbackOptions = Object.keys({ good, neutral, bad });
     const isLeaveFeedback = total > 0;
     return (
       <div>

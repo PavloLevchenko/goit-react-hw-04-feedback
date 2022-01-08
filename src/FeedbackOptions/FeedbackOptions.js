@@ -4,21 +4,21 @@ import s from './FeedbackOptions.module.css';
 
 class FeedbackOptions extends Component {
   static propTypes = {
-    options: PropTypes.objectOf(PropTypes.number),
+    options: PropTypes.arrayOf(PropTypes.string),
     onLeaveFeedback: PropTypes.func.isRequired,
   };
   render() {
     const { options, onLeaveFeedback } = this.props;
-    const btnNames = Object.keys(options);
     return (
       <div>
-        {btnNames.map(name => {
+        {options.map(name => {
           return (
             <button
               type="button"
               key={name}
+              name={name}
               className={s.feedbackBtn}
-              onClick={() => onLeaveFeedback(name, options[name])}
+              onClick={onLeaveFeedback}
             >
               {name}
             </button>
