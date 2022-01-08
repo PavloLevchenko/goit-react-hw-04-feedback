@@ -15,6 +15,7 @@ class FeedbackOptions extends Component {
         {btnNames.map(name => {
           return (
             <button
+              type="button"
               key={name}
               className={s.feedbackBtn}
               onClick={() => onLeaveFeedback(name, options[name])}
