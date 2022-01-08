@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import s from './Section.module.css';
 
 class Section extends Component {
+  static propTypes = {
+    options: PropTypes.string,
+    children: PropTypes.PropTypes.element.isRequired,
+  };
   render() {
     const { title } = this.props;
     const { children } = this.props;
