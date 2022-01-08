@@ -1,0 +1,6 @@
+.feedbackBtn {
+  cursor: pointer;
+}
+.feedbackBtn + .feedbackBtn {
+  margin-left: 10px;
+}
