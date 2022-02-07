@@ -8,8 +8,7 @@ class Section extends Component {
     children: PropTypes.PropTypes.element.isRequired,
   };
   render() {
-    const { title } = this.props;
-    const { children } = this.props;
+    const { title, children } = this.props;
     return (
       <section className={s.section}>
         <h2>{title}</h2>
