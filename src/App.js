@@ -12,12 +12,16 @@ const App = () => {
 
   const total = good + neutral + bad;
   const feedbackOptions = { good: setGood, neutral: setNeutral, bad: setBad };
+  const setFeedback = type => {
+    feedbackOptions[type](prev => prev + 1);
+  };
   const positivePercentage = Math.round((good / total) * 100);
   const isLeaveFeedback = total > 0;
+
   return (
     <div>
       <Section title="Please leave feedback">
-        <FeedbackOptions options={feedbackOptions} />
+        <FeedbackOptions options={Object.keys(feedbackOptions)} onClickFeedback={setFeedback} />
       </Section>
       <Section title="Statistics">
         {isLeaveFeedback ? (
