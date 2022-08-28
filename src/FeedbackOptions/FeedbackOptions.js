@@ -7,7 +7,6 @@ const FeedbackOptions = ({ options, onClickFeedback }) =>
       <button
         type="button"
         key={name.toString()}
-        name={name}
         className={s.feedbackBtn}
         onClick={() => onClickFeedback(name)}
       >
