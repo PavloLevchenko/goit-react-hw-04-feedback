@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
-import Section from 'Section';
-import Statistics from 'Statistics';
-import FeedbackOptions from 'FeedbackOptions';
-import Notification from 'Notification';
+import { Section } from 'components/Section';
+import { Statistics } from 'components/Statistics';
+import { FeedbackOptions } from 'components/FeedbackOptions';
+import { Notification } from 'components/Notification';
 
-const App = () => {
+export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
@@ -19,25 +18,22 @@ const App = () => {
   const isLeaveFeedback = total > 0;
 
   return (
-    <div>
+    <>
       <Section title="Please leave feedback">
-        <FeedbackOptions options={Object.keys(feedbackOptions)} onClickFeedback={setFeedback} />
+        <FeedbackOptions
+          options={Object.keys(feedbackOptions)}
+          onClickFeedback={setFeedback}
+        />
       </Section>
       <Section title="Statistics">
         {isLeaveFeedback ? (
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
+            options={{ good, neutral, bad, total, positivePercentage }}
           />
         ) : (
           <Notification message="No feedback given" />
         )}
       </Section>
-    </div>
+    </>
   );
 };
-
-export default App;
